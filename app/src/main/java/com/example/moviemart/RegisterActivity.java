@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.example.moviemart.db.UserDao;
 import com.example.moviemart.db.UserDatabase;
 
-public class LoginActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     EditText userId, password;
     Button register;

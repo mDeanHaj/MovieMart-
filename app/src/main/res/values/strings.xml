@@ -6,4 +6,6 @@
     <string name="enter_password">Enter Password</string>
     <string name="enter_username">Enter Username</string>
     <string name="register_user">Register User</string>
+    <string name="login">Login</string>
+    <string name="return_to_login_page">Return to login page</string>
 </resources>
