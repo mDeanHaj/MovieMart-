@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Update;
 
 import com.example.moviemart.MovieLog;
+import com.example.moviemart.User;
 
 @Dao
 public interface MovieLogDAO {
@@ -18,4 +19,10 @@ public interface MovieLogDAO {
 
     @Delete
     void delete(MovieLog movieLog);
+
+
+
+    @Insert
+    void registerUser(User user);
+
 }
