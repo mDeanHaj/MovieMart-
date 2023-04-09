@@ -8,7 +8,4 @@
     <string name="register_user">Register User</string>
     <string name="login">Login</string>
     <string name="return_to_login_page">Return to login page</string>
-    <string name="welcome_to_movi_e_mart">Welcome to Movi-E-Mart!</string>
-    <string name="not_yet_registered">Not yet registered?</string>
-    <string name="welcome_please_login">Welcome! Please Login</string>
 </resources>
