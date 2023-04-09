@@ -16,8 +16,8 @@ public class User {
     @ColumnInfo(name = "password")
     String password;
 
-    @ColumnInfo(name = "name")
-    String name;
+//    @ColumnInfo(name = "name")
+//    String name;
 
     public Integer getId() {
         return id;
@@ -43,11 +43,11 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 }

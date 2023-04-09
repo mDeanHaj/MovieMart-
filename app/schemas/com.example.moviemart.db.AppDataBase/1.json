@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "f91dbfb63dcd2ebbdd00e95e5ca1ee87",
+    "identityHash": "ebcd6ef9d19cde3cfa45599464284928",
     "entities": [
       {
         "tableName": "movielog_table",
@@ -38,7 +38,7 @@
       },
       {
         "tableName": "users",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `userId` TEXT, `password` TEXT, `name` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `userId` TEXT, `password` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -57,12 +57,6 @@
             "columnName": "password",
             "affinity": "TEXT",
             "notNull": false
-          },
-          {
-            "fieldPath": "name",
-            "columnName": "name",
-            "affinity": "TEXT",
-            "notNull": false
           }
         ],
         "primaryKey": {
@@ -78,7 +72,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f91dbfb63dcd2ebbdd00e95e5ca1ee87')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ebcd6ef9d19cde3cfa45599464284928')"
     ]
   }
 }
