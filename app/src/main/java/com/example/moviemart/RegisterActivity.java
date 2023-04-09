@@ -46,6 +46,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     Toast.makeText(getApplicationContext(), "Username Registered!", Toast.LENGTH_SHORT).show();
+                                    userId.setText("");
+                                    password.setText("");
                                 }
                             });
                         }
