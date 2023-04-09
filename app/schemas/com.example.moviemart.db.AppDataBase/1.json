@@ -1,0 +1,46 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "6575e27db9dadc4ddc06a7a37457c39f",
+    "entities": [
+      {
+        "tableName": "movielog_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mLogId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mMovie` TEXT, `mStock` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "mLogId",
+            "columnName": "mLogId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mMovie",
+            "columnName": "mMovie",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mStock",
+            "columnName": "mStock",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "mLogId"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6575e27db9dadc4ddc06a7a37457c39f')"
+    ]
+  }
+}
