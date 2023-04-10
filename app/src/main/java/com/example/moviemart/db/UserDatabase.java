@@ -33,7 +33,7 @@ public abstract class UserDatabase extends RoomDatabase {
             }
         }).start();
     }
-    
+
     public void deleteUser(User user) {
         new Thread(new Runnable() {
             @Override
