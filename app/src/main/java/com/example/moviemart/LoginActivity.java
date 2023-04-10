@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(new Intent(LoginActivity.this, Dashboard.class)
                                 .putExtra("name", TEST_USERNAME));
                     }else if(userIdText.equals(ADMIN_USERNAME) && passwordText.equals(ADMIN_PASSWORD)){
-                        startActivity(new Intent(LoginActivity.this, Dashboard.class)
+                        startActivity(new Intent(LoginActivity.this, AdminDashboard.class)
                                 .putExtra("name", ADMIN_USERNAME));
                     }else{
                         UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());

@@ -20,7 +20,6 @@ public interface UserDao {
     @Delete
     void deleteUser(User user);
 
-
     @Query("SELECT * from user_table where userId=(:userId) and password=(:password)")
     User login(String userId, String password);
 }
