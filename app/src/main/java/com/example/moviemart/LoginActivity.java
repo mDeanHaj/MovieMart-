@@ -17,10 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText userId, password;
     Button regUser, login;
 
-    private static final String TEST_USERNAME = "testuser1";
-    private static final String TEST_PASSWORD = "testuser1";
-    private static final String ADMIN_USERNAME = "admin2";
-    private static final String ADMIN_PASSWORD = "admin2";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +37,6 @@ public class LoginActivity extends AppCompatActivity {
                 if(userIdText.isEmpty() || passwordText.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Fill all Fields!", Toast.LENGTH_SHORT).show();
                 }else{
-                    if(userIdText.equals(TEST_USERNAME) && passwordText.equals(TEST_PASSWORD)){
-                        startActivity(new Intent(LoginActivity.this, Dashboard.class)
-                                .putExtra("name", TEST_USERNAME));
-                    }else if(userIdText.equals(ADMIN_USERNAME) && passwordText.equals(ADMIN_PASSWORD)){
-                        startActivity(new Intent(LoginActivity.this, AdminDashboard.class)
-                                .putExtra("name", ADMIN_USERNAME));
-                    }else{
                         UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
                         UserDao userDao = userDatabase.mUserDao();
                         new Thread(new Runnable() {
@@ -69,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                         }).start();
                     }
                 }
-            }
+
         });
 
         regUser.setOnClickListener(new View.OnClickListener() {
