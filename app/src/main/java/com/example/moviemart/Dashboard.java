@@ -2,12 +2,16 @@ package com.example.moviemart;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Dashboard extends AppCompatActivity {
 
     TextView mName;
+    Button mAdminButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,8 +19,22 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         mName = findViewById(R.id.name);
+        mAdminButton = findViewById(R.id.adminButton);
         String user = getIntent().getStringExtra("name");
         mName.setText(user);
+
+        if (user.equals("admin2")) {
+            mAdminButton.setVisibility(View.VISIBLE);
+        } else {
+            mAdminButton.setVisibility(View.INVISIBLE);
+        }
+
+        mAdminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this, AdminDashboard.class));
+            }
+        });
 
     }
 }

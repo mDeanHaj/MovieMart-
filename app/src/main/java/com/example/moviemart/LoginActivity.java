@@ -16,6 +16,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText userId, password;
     Button regUser, login;
+    Button adminButton;
 
     private static final String TEST_USERNAME = "testuser1";
     private static final String TEST_PASSWORD = "testuser1";
@@ -46,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                     }else if(userIdText.equals(ADMIN_USERNAME) && passwordText.equals(ADMIN_PASSWORD)){
                         startActivity(new Intent(LoginActivity.this, AdminDashboard.class)
                                 .putExtra("name", ADMIN_USERNAME));
+                                adminButton.setVisibility(View.VISIBLE);
                     }else{
                         UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
                         UserDao userDao = userDatabase.mUserDao();
