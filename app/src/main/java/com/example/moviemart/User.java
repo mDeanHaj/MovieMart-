@@ -16,9 +16,6 @@ public class User {
     @ColumnInfo(name = "password")
     String password;
 
-    @ColumnInfo(name = "isAdmin")
-    boolean isAdmin;
-
     public Integer getId() {
         return id;
     }
