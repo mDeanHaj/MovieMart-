@@ -6,9 +6,10 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.moviemart.Movie;
 import com.example.moviemart.User;
 
-@Database(entities = {User.class}, version = 2)
+@Database(entities = {User.class, Movie.class}, version = 3)
 public abstract class UserDatabase extends RoomDatabase {
 
     private static final String dbName = "user";
@@ -24,6 +25,7 @@ public abstract class UserDatabase extends RoomDatabase {
     }
 
     public abstract UserDao mUserDao();
+    public abstract MovieDao mMovieDao();
 
     public void updateUser(User user) {
         new Thread(new Runnable() {
@@ -42,4 +44,6 @@ public abstract class UserDatabase extends RoomDatabase {
             }
         }).start();
     }
+
+
 }
