@@ -48,6 +48,8 @@ public class RegisterActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "Username Registered!", Toast.LENGTH_SHORT).show();
                                     userId.setText("");
                                     password.setText("");
+                                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                    finish();
                                 }
                             });
                         }
