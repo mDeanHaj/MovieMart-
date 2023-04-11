@@ -68,7 +68,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:background="#3bc9e1"
-        android:text="something1"
+        android:text="Order a Movie"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
@@ -80,7 +80,7 @@
         android:layout_gravity="center"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
-        android:text="something2" />
+        android:text="Order History" />
 
     <Button
         android:id="@+id/button3"
