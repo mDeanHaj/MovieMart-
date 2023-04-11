@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class Dashboard extends AppCompatActivity {
 
     TextView mName;
-    Button mAdminButton;
+    Button mLogoutButton, mAdminButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         mName = findViewById(R.id.name);
+        mLogoutButton = findViewById(R.id.logoutButton);
         mAdminButton = findViewById(R.id.adminButton);
         String user = getIntent().getStringExtra("name");
         mName.setText(user);
@@ -36,5 +37,11 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
+        mLogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this, LoginActivity.class));
+            }
+        });
     }
 }

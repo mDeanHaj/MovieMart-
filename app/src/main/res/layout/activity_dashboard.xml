@@ -46,16 +46,68 @@
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:layout_marginTop="20dp"
+                android:text="Logout?" />
+
         </LinearLayout>
 
     </LinearLayout>
 
     <Button
+        android:id=""
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:text="something" />
+
+    <Button
+        android:id=""
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:text="something" />
+
+    <Button
+        android:id=""
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:text="something" />
+
+    <Button
+        android:id=""
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:text="something" />
+
+    <Button
         android:id="@+id/adminButton"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:text="Admin"
         android:visibility="invisible" />
 
