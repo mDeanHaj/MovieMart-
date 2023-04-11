@@ -62,13 +62,13 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/searchMovie"
+        android:id="@+id/button1"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:background="#3bc9e1"
-        android:text="@string/search_for_a_movie"
+        android:text="Search for a Movie"
         android:textColor="@color/black"
         android:textSize="20sp" />
 

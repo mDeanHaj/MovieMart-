@@ -9,18 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.moviemart.Movie;
-import com.example.moviemart.db.MovieDao;
-import com.example.moviemart.db.UserDatabase;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Dashboard extends AppCompatActivity {
 
     TextView mName;
     Button mLogoutButton, mAdminButton;
-    Button mSearchMovieButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,31 +48,5 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(new Intent(Dashboard.this, LoginActivity.class));
             }
         });
-
-        mSearchMovieButton = findViewById(R.id.searchMovie);
-
-        mSearchMovieButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                insertPredefinedMovies();
-                // Add code to search and display movies
-            }
-        });
-    }
-
-    private void insertPredefinedMovies() {
-        MovieDao movieDao = UserDatabase.getUserDatabase(this).mMovieDao();
-        List<Movie> predefinedMovies = new ArrayList<>();
-
-        // Add Movie List
-        predefinedMovies.add(new Movie("Movie Title 1", "Director 1", "Genre 1", 2021));
-        predefinedMovies.add(new Movie("Movie Title 2", "Director 2", "Genre 2", 2020));
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                movieDao.insertMovies(predefinedMovies);
-            }
-        }).start();
     }
 }
