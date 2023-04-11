@@ -55,7 +55,7 @@
         android:id="@+id/userId"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:hint="Enter Username"
         android:inputType="text"
