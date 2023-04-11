@@ -33,7 +33,7 @@ public class Dashboard extends AppCompatActivity {
         mAdminButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Dashboard.this, AdminDashboard.class));
+                startActivity(new Intent(Dashboard.this, AdminActivity.class));
             }
         });
 
