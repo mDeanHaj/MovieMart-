@@ -22,4 +22,7 @@ public interface UserDao {
 
     @Query("SELECT * from user_table where userId=(:userId) and password=(:password)")
     User login(String userId, String password);
+
+    @Query("SELECT * FROM user_table WHERE id = :id")
+    User getUserById(int id);
 }

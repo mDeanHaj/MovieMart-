@@ -48,14 +48,29 @@ public class SearchMovie extends AppCompatActivity implements MovieAdapter.OnIte
         builder.setTitle("Order Movie");
         builder.setMessage("Would you like to order " + selectedMovie.getTitle() + "?");
         builder.setPositiveButton("Yes", (dialog, which) -> {
-            int userId = LoggedInUser.getInstance().getUser().getId();
-            Order newOrder = new Order(userId, selectedMovie.getId());
-            new Thread(() -> {
-                movieDatabase.orderDao().insert(newOrder);
-                runOnUiThread(() -> {
-                    Toast.makeText(SearchMovie.this, "You have ordered " + selectedMovie.getTitle(), Toast.LENGTH_SHORT).show();
-                });
-            }).start();
+            User currentUser = LoggedInUser.getInstance().getUser();
+            if (currentUser == null) {
+                Toast.makeText(SearchMovie.this, "You must be logged in to order a movie", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            int userId = currentUser.getId();
+            int movieId = selectedMovie.getId();
+
+            boolean isUserValid = movieDatabase.userDao().getUserById(userId) != null;
+            boolean isMovieValid = movieDatabase.movieDao().getMovieById(movieId) != null;
+
+            if (isUserValid && isMovieValid) {
+                Order newOrder = new Order(userId, movieId);
+                new Thread(() -> {
+                    movieDatabase.orderDao().insert(newOrder);
+                    runOnUiThread(() -> {
+                        Toast.makeText(SearchMovie.this, "You have ordered " + selectedMovie.getTitle(), Toast.LENGTH_SHORT).show();
+                    });
+                }).start();
+            } else {
+                Toast.makeText(SearchMovie.this, "Invalid user or movie", Toast.LENGTH_SHORT).show();
+            }
         });
         builder.setNegativeButton("No", (dialog, which) -> {
             Toast.makeText(SearchMovie.this, "You have not ordered " + selectedMovie.getTitle(), Toast.LENGTH_SHORT).show();

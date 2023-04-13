@@ -19,4 +19,8 @@ public interface MovieDao {
 
     @Query("SELECT COUNT(*) FROM movie_table WHERE title = :title AND year = :year AND genre = :genre")
     int countMovieWithTitleYearGenre(String title, int year, String genre);
+
+    @Query("SELECT * FROM movie_table WHERE id = :id")
+    Movie getMovieById(int id);
 }
+
