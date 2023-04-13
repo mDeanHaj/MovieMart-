@@ -90,16 +90,4 @@
         android:layout_marginTop="20dp"
         android:text="@string/not_yet_registered" />
 
-    <Button
-        android:id="@+id/adminButton"
-        android:layout_width="200sp"
-        android:layout_height="wrap_content"
-        android:background="#00000000"
-        android:textSize="11sp"
-        android:textColor="@color/black"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Admin Login"
-        android:visibility="gone" />
-
 </LinearLayout>
