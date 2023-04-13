@@ -63,7 +63,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:background="#84c247"
-        android:text="Add a Movie"
+        android:text="something1"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
@@ -75,7 +75,7 @@
         android:layout_gravity="center"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
-        android:text="View Existing Movie" />
+        android:text="something2" />
 
     <Button
         android:id="@+id/button3"
@@ -85,7 +85,7 @@
         android:layout_gravity="center"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
-        android:text="Remove a Movie" />
+        android:text="something3" />
 
     <Button
         android:id="@+id/button4"
@@ -95,6 +95,6 @@
         android:layout_gravity="center"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
-        android:text="View Users" />
+        android:text="something4" />
 
 </LinearLayout>
