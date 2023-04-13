@@ -4,44 +4,41 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.example.moviemart.db.LoginDao;
+import com.example.moviemart.db.LoginDatabase;
 
 public class MainActivity extends AppCompatActivity {
+    private EditText editTextName;
+    private Button buttonLogin;
 
-    private static int SPLASH_SCREEN = 3000;
-
-    Animation topAnim, bottomAnim;
-    ImageView image;
-    TextView slogan;
+    private LoginDao userDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-        topAnim = AnimationUtils.loadAnimation(this,R.anim.top_animation);
-        bottomAnim = AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
+        editTextName = findViewById(R.id.editTextName);
+        buttonLogin = findViewById(R.id.buttonLogin);
 
-        image = findViewById(R.id.imageView);
-        slogan = findViewById(R.id.textView);
+        LoginDatabase database = LoginDatabase.getInstance(this);
+        userDao = database.userDao();
 
-        image.setAnimation(topAnim);
-        slogan.setAnimation(bottomAnim);
-
-        new Handler().postDelayed(new Runnable() {
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        },SPLASH_SCREEN) ;
+            public void onClick(View v) {
+                String name = editTextName.getText().toString();
+                Login user = new Login();
+                user.setName(name);
+                userDao.insert(user);
 
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
