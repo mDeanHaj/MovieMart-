@@ -62,7 +62,11 @@
     </LinearLayout>
 
     <Button
+<<<<<<< HEAD
         android:id="@+id/searchButton"
+=======
+        android:id="@+id/searchMovie"
+>>>>>>> parent of 3c6cf7e (Revert "testing")
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
