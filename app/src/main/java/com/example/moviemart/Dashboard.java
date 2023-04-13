@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class Dashboard extends AppCompatActivity {
 
     TextView mName;
-    Button mLogoutButton, mAdminButton;
+    Button mLogoutButton, mAdminButton, mSearchMovieButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class Dashboard extends AppCompatActivity {
 
         mName = findViewById(R.id.name);
         mLogoutButton = findViewById(R.id.logoutButton);
+        mSearchMovieButton = findViewById(R.id.searchMovieButton);
         mAdminButton = findViewById(R.id.adminButton);
         String user = getIntent().getStringExtra("name");
         mName.setText(user);
@@ -30,6 +31,13 @@ public class Dashboard extends AppCompatActivity {
         } else {
             mAdminButton.setVisibility(View.INVISIBLE);
         }
+
+        mSearchMovieButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this, SearchMovie.class));
+            }
+        });
 
         mAdminButton.setOnClickListener(new View.OnClickListener() {
             @Override
