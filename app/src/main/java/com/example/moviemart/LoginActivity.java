@@ -40,32 +40,33 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String userIdText = userId.getText().toString();
                 String passwordText = password.getText().toString();
-                if(userIdText.isEmpty() || passwordText.isEmpty()){
+                if (userIdText.isEmpty() || passwordText.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Fill all Fields!", Toast.LENGTH_SHORT).show();
-                }else{
-                    if(userIdText.equals(TEST_USERNAME) && passwordText.equals(TEST_PASSWORD)){
+                } else {
+                    if (userIdText.equals(TEST_USERNAME) && passwordText.equals(TEST_PASSWORD)) {
                         startActivity(new Intent(LoginActivity.this, Dashboard.class)
                                 .putExtra("name", TEST_USERNAME));
-                    }else if(userIdText.equals(ADMIN_USERNAME) && passwordText.equals(ADMIN_PASSWORD)){
+                    } else if (userIdText.equals(ADMIN_USERNAME) && passwordText.equals(ADMIN_PASSWORD)) {
                         startActivity(new Intent(LoginActivity.this, Dashboard.class)
                                 .putExtra("name", ADMIN_USERNAME));
-                                adminButton.setVisibility(View.VISIBLE);
-                    }else{
+                        adminButton.setVisibility(View.VISIBLE);
+                    } else {
                         UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
                         UserDao userDao = userDatabase.mUserDao();
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
                                 User user = userDao.login(userIdText, passwordText);
-                                if(user == null){
+                                if (user == null) {
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
                                             Toast.makeText(getApplicationContext(), "Invalid Credentials!", Toast.LENGTH_SHORT).show();
                                         }
                                     });
-                                }else{
-                                    String name = user.userId;
+                                } else {
+                                    LoggedInUser.getInstance().setUser(user);
+                                    String name = user.getUserId();
                                     startActivity(new Intent(LoginActivity.this, Dashboard.class)
                                             .putExtra("name", name));
                                 }
