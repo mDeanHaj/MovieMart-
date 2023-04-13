@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.moviemart.db.MovieDatabase;
@@ -57,5 +58,9 @@ public class SearchMovie extends AppCompatActivity implements MovieAdapter.OnIte
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    public void onReturnButtonClick(View view) {
+        finish();
     }
 }
