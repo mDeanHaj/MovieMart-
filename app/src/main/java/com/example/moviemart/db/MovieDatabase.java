@@ -7,11 +7,15 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.moviemart.Movie;
+import com.example.moviemart.Order;
+import com.example.moviemart.User;
 
-@Database(entities = {Movie.class}, version = 1)
+@Database(entities = {Movie.class, User.class, Order.class}, version = 2)
 public abstract class MovieDatabase extends RoomDatabase {
 
     public abstract MovieDao movieDao();
+    public abstract UserDao userDao();
+    public abstract OrderDao orderDao();
 
     private static MovieDatabase instance;
 

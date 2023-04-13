@@ -48,11 +48,14 @@ public class SearchMovie extends AppCompatActivity implements MovieAdapter.OnIte
         builder.setTitle("Order Movie");
         builder.setMessage("Would you like to order " + selectedMovie.getTitle() + "?");
         builder.setPositiveButton("Yes", (dialog, which) -> {
-            // Perform action when the user clicks "Yes"
+            int userId = 1;
+            Order order = new Order(userId, selectedMovie.getId());
+            new Thread(() -> {
+                movieDatabase.orderDao().insert(order);
+            }).start();
             Toast.makeText(SearchMovie.this, "You have ordered " + selectedMovie.getTitle(), Toast.LENGTH_SHORT).show();
         });
         builder.setNegativeButton("No", (dialog, which) -> {
-            // Perform action when the user clicks "No"
             Toast.makeText(SearchMovie.this, "You have not ordered " + selectedMovie.getTitle(), Toast.LENGTH_SHORT).show();
         });
 
