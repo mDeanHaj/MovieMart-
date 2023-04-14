@@ -35,6 +35,23 @@ public class LoginActivity extends AppCompatActivity {
 
         adminButton = findViewById(R.id.adminButton);
 
+        int loggedInUserId = LoggedInUser.getInstance().getUserIdFromPreferences(getApplicationContext());
+        if (loggedInUserId != -1) {
+            UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
+            UserDao userDao = userDatabase.mUserDao();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    User user = userDao.getUserById(loggedInUserId);
+                    if (user != null) {
+                        LoggedInUser.getInstance().setUser(user);
+                        String name = user.getUserId();
+                        startActivity(new Intent(LoginActivity.this, Dashboard.class).putExtra("name", name));
+                    }
+                }
+            }).start();
+        }
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
