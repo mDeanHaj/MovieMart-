@@ -31,19 +31,38 @@ public class RegisterActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = new User();
-                user.setUserId(userId.getText().toString());
-                user.setPassword(password.getText().toString());
+                String username = userId.getText().toString();
+                String passwordText = password.getText().toString();
 
-                if(validateInput(user)){
-                    MovieDatabase movieDatabase = MovieDatabase.getInstance(getApplicationContext());
-                    UserDao userDao = movieDatabase.userDao();
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
+                if (username.isEmpty() || passwordText.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Fill Username and Password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                MovieDatabase movieDatabase = MovieDatabase.getInstance(getApplicationContext());
+                UserDao userDao = movieDatabase.userDao();
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        int count = userDao.countUsersWithUsername(username);
+
+                        if (count > 0) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getApplicationContext(), "Username already exists!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+                            User user = new User();
+                            user.setUserId(username);
+                            user.setPassword(passwordText);
+
                             userDao.registerUser(user);
                             LoggedInUser.getInstance().setUser(user);
                             LoggedInUser.getInstance().saveUserIdToPreferences(getApplicationContext());
+
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -55,10 +74,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
                             });
                         }
-                    }).start();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Fill Username and Password!", Toast.LENGTH_SHORT).show();
-                }
+                    }
+                }).start();
             }
         });
         login.setOnClickListener(new View.OnClickListener() {
