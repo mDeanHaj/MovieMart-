@@ -55,8 +55,8 @@ public class SearchMovie extends AppCompatActivity implements MovieAdapter.OnIte
     public void onItemClick(int position) {
         Movie selectedMovie = movies.get(position);
         AlertDialog.Builder builder = new AlertDialog.Builder(SearchMovie.this);
-        builder.setTitle("Purchase Movie");
-        builder.setMessage("Do you want to buy this movie?");
+        builder.setTitle(selectedMovie.getTitle());
+        builder.setMessage("Do you want to purchase this movie?");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
