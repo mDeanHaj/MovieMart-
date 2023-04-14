@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.moviemart.db.MovieDatabase;
 import com.example.moviemart.db.UserDao;
-import com.example.moviemart.db.UserDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -36,12 +36,14 @@ public class RegisterActivity extends AppCompatActivity {
                 user.setPassword(password.getText().toString());
 
                 if(validateInput(user)){
-                    UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
-                    UserDao userDao = userDatabase.mUserDao();
+                    MovieDatabase movieDatabase = MovieDatabase.getInstance(getApplicationContext());
+                    UserDao userDao = movieDatabase.userDao();
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             userDao.registerUser(user);
+                            LoggedInUser.getInstance().setUser(user);
+                            LoggedInUser.getInstance().saveUserIdToPreferences(getApplicationContext());
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {

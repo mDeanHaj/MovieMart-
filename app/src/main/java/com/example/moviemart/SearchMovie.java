@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+import com.example.moviemart.Order;
 
 import com.example.moviemart.db.MovieDatabase;
 
@@ -35,6 +37,14 @@ public class SearchMovie extends AppCompatActivity implements MovieAdapter.OnIte
         movieDatabase = MovieDatabase.getInstance(this);
         MovieDatabaseInitializer.populateAsync(movieDatabase);
 
+        int loggedInUserId = LoggedInUser.getInstance().getUserIdFromPreferences(this);
+        if (loggedInUserId != -1) {
+            new Thread(() -> {
+                User user = movieDatabase.userDao().getUserById(loggedInUserId);
+                LoggedInUser.getInstance().setUser(user);
+            }).start();
+        }
+
         new Thread(() -> {
             movies = movieDatabase.movieDao().getAllMovies();
             runOnUiThread(() -> adapter.setMovies(movies));
@@ -44,32 +54,29 @@ public class SearchMovie extends AppCompatActivity implements MovieAdapter.OnIte
     @Override
     public void onItemClick(int position) {
         Movie selectedMovie = movies.get(position);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Order Movie");
-        builder.setMessage("Would you like to order " + selectedMovie.getTitle() + "?");
-        builder.setPositiveButton("Yes", (dialog, which) -> {
-            User currentUser = LoggedInUser.getInstance().getUser();
-            if (currentUser == null) {
-                Toast.makeText(SearchMovie.this, "You must be logged in to order a movie", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            int userId = currentUser.getId();
-            int movieId = selectedMovie.getId();
-
-            boolean isUserValid = movieDatabase.userDao().getUserById(userId) != null;
-            boolean isMovieValid = movieDatabase.movieDao().getMovieById(movieId) != null;
-
-            if (isUserValid && isMovieValid) {
-                Order newOrder = new Order(userId, movieId);
-                new Thread(() -> {
-                    movieDatabase.orderDao().insert(newOrder);
-                    runOnUiThread(() -> {
-                        Toast.makeText(SearchMovie.this, "You have ordered " + selectedMovie.getTitle(), Toast.LENGTH_SHORT).show();
-                    });
+        AlertDialog.Builder builder = new AlertDialog.Builder(SearchMovie.this);
+        builder.setTitle("Purchase Movie");
+        builder.setMessage("Do you want to buy this movie?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        User loggedInUser = LoggedInUser.getInstance().getUser();
+                        int loggedInUserId = loggedInUser.getId();
+                        Order order = new Order();
+                        order.setUserId(loggedInUserId);
+                        order.setMovieId(selectedMovie.getId());
+                        movieDatabase.orderDao().insertOrder(order);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(SearchMovie.this, "Movie ordered successfully!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }).start();
-            } else {
-                Toast.makeText(SearchMovie.this, "Invalid user or movie", Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNegativeButton("No", (dialog, which) -> {

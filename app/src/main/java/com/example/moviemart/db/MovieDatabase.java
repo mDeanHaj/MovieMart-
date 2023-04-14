@@ -10,7 +10,7 @@ import com.example.moviemart.Movie;
 import com.example.moviemart.Order;
 import com.example.moviemart.User;
 
-@Database(entities = {Movie.class, User.class, Order.class}, version = 2)
+@Database(entities = {Movie.class, User.class, Order.class}, version = 3)
 public abstract class MovieDatabase extends RoomDatabase {
 
     public abstract MovieDao movieDao();

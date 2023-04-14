@@ -9,8 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.moviemart.db.MovieDatabase;
 import com.example.moviemart.db.UserDao;
-import com.example.moviemart.db.UserDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,8 +37,8 @@ public class LoginActivity extends AppCompatActivity {
 
         int loggedInUserId = LoggedInUser.getInstance().getUserIdFromPreferences(getApplicationContext());
         if (loggedInUserId != -1) {
-            UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
-            UserDao userDao = userDatabase.mUserDao();
+            MovieDatabase movieDatabase = MovieDatabase.getInstance(getApplicationContext());
+            UserDao userDao = movieDatabase.userDao();
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -68,8 +68,8 @@ public class LoginActivity extends AppCompatActivity {
                                 .putExtra("name", ADMIN_USERNAME));
                         adminButton.setVisibility(View.VISIBLE);
                     } else {
-                        UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
-                        UserDao userDao = userDatabase.mUserDao();
+                        MovieDatabase movieDatabase = MovieDatabase.getInstance(getApplicationContext());
+                        UserDao userDao = movieDatabase.userDao();
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
@@ -83,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                                     });
                                 } else {
                                     LoggedInUser.getInstance().setUser(user);
+                                    LoggedInUser.getInstance().saveUserIdToPreferences(getApplicationContext());
                                     String name = user.getUserId();
                                     startActivity(new Intent(LoginActivity.this, Dashboard.class)
                                             .putExtra("name", name));

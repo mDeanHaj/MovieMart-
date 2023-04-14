@@ -13,7 +13,7 @@ import java.util.List;
 public interface OrderDao {
 
     @Insert
-    void insert(Order order);
+    void insertOrder(Order order);
 
     @Query("SELECT * FROM order_table WHERE userId = :userId")
     List<Order> getOrdersByUserId(int userId);
