@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:text="Welcome Back:" />
+                android:text="@string/welcome_back" />
 
             <TextView
                 android:id="@+id/name"
@@ -55,7 +55,7 @@
                 android:textColor="#FFFF0000"
                 android:textSize="12sp"
                 android:layout_marginTop="20dp"
-                android:text="Logout?" />
+                android:text="@string/logout" />
 
         </LinearLayout>
 
@@ -68,19 +68,19 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:background="#3bc9e1"
-        android:text="Search for a Movie"
+        android:text="@string/search_for_a_movie"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/orderHistoryButton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="#3bc9e1"
         android:layout_gravity="center"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
-        android:text="Order History" />
+        android:text="@string/order_history" />
 
     <Button
         android:id="@+id/button3"
@@ -90,7 +90,7 @@
         android:layout_gravity="center"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
-        android:text="Cancel Order" />
+        android:text="@string/cancel_order" />
 
     <Button
         android:id="@+id/adminButton"

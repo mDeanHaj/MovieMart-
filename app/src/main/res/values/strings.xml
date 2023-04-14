@@ -13,4 +13,9 @@
     <string name="welcome_please_login">Welcome! Please Login</string>
     <string name="if_nothing_appears_please_refresh_page">If nothing appears, please refresh page.</string>
     <string name="order_a_movie">Order a Movie!</string>
+    <string name="search_for_a_movie">Search for a Movie</string>
+    <string name="order_history">Order History</string>
+    <string name="cancel_order">Cancel Order</string>
+    <string name="logout">Logout?</string>
+    <string name="welcome_back">Welcome Back:</string>
 </resources>

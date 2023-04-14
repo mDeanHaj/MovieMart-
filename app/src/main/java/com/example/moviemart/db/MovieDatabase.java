@@ -28,4 +28,18 @@ public abstract class MovieDatabase extends RoomDatabase {
         }
         return instance;
     }
+
+    private static void insertPredefinedUsers(Context context) {
+        User user1 = new User();
+        user1.setUserId("testuser1");
+        user1.setPassword("testuser1");
+
+        User adminUser = new User();
+        adminUser.setUserId("admin2");
+        adminUser.setPassword("admin2");
+
+        UserDao userDao = getInstance(context).userDao();
+        userDao.registerUser(user1);
+        userDao.registerUser(adminUser);
+    }
 }
