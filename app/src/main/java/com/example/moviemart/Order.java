@@ -11,13 +11,9 @@ import androidx.room.PrimaryKey;
                 @ForeignKey(entity = User.class,
                         parentColumns = "id",
                         childColumns = "userId",
-                        onDelete = ForeignKey.CASCADE),
-                @ForeignKey(entity = Movie.class,
-                        parentColumns = "id",
-                        childColumns = "movieId",
                         onDelete = ForeignKey.CASCADE)
         },
-        indices = {@Index("userId"), @Index("movieId")}
+        indices = {@Index("userId")}
 )
 public class Order {
 
@@ -27,16 +23,18 @@ public class Order {
     @ColumnInfo(name = "userId")
     private int userId;
 
-    @ColumnInfo(name = "movieId")
-    private int movieId;
-
-
-    public Order(int userId, int movieId) {
-        this.userId = userId;
-        this.movieId = movieId;
-    }
+    @ColumnInfo(name = "movieTitle")
+    private String movieTitle;
 
     public Order() {
+    }
+
+    public String getMovieTitle() {
+        return movieTitle;
+    }
+
+    public void setMovieTitle(String movieTitle) {
+        this.movieTitle = movieTitle;
     }
 
     public int getId() {
@@ -55,12 +53,5 @@ public class Order {
         this.userId = userId;
     }
 
-    public int getMovieId() {
-        return movieId;
-    }
-
-    public void setMovieId(int movieId) {
-        this.movieId = movieId;
-    }
 }
 

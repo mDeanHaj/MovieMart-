@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 3,
-    "identityHash": "2a868105f8bbf983298a20be35c27b7e",
+    "identityHash": "3c6863851809d83fd60f544b46af7b95",
     "entities": [
       {
         "tableName": "movie_table",
@@ -82,7 +82,7 @@
       },
       {
         "tableName": "order_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `userId` INTEGER NOT NULL, `movieId` INTEGER NOT NULL, FOREIGN KEY(`userId`) REFERENCES `user_table`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`movieId`) REFERENCES `movie_table`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `userId` INTEGER NOT NULL, `movieTitle` TEXT, FOREIGN KEY(`userId`) REFERENCES `user_table`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -97,10 +97,10 @@
             "notNull": true
           },
           {
-            "fieldPath": "movieId",
-            "columnName": "movieId",
-            "affinity": "INTEGER",
-            "notNull": true
+            "fieldPath": "movieTitle",
+            "columnName": "movieTitle",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -118,15 +118,6 @@
             ],
             "orders": [],
             "createSql": "CREATE INDEX IF NOT EXISTS `index_order_table_userId` ON `${TABLE_NAME}` (`userId`)"
-          },
-          {
-            "name": "index_order_table_movieId",
-            "unique": false,
-            "columnNames": [
-              "movieId"
-            ],
-            "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_order_table_movieId` ON `${TABLE_NAME}` (`movieId`)"
           }
         ],
         "foreignKeys": [
@@ -140,17 +131,6 @@
             "referencedColumns": [
               "id"
             ]
-          },
-          {
-            "table": "movie_table",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "movieId"
-            ],
-            "referencedColumns": [
-              "id"
-            ]
           }
         ]
       }
@@ -158,7 +138,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2a868105f8bbf983298a20be35c27b7e')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3c6863851809d83fd60f544b46af7b95')"
     ]
   }
 }
