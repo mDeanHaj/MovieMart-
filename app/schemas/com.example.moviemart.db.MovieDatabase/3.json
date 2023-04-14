@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 3,
-    "identityHash": "3c6863851809d83fd60f544b46af7b95",
+    "identityHash": "1a038fae1f70eb48212daad9c51c048c",
     "entities": [
       {
         "tableName": "movie_table",
@@ -82,7 +82,7 @@
       },
       {
         "tableName": "order_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `userId` INTEGER NOT NULL, `movieTitle` TEXT, FOREIGN KEY(`userId`) REFERENCES `user_table`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `userName` TEXT, `movieTitle` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -91,10 +91,10 @@
             "notNull": true
           },
           {
-            "fieldPath": "userId",
-            "columnName": "userId",
-            "affinity": "INTEGER",
-            "notNull": true
+            "fieldPath": "userName",
+            "columnName": "userName",
+            "affinity": "TEXT",
+            "notNull": false
           },
           {
             "fieldPath": "movieTitle",
@@ -111,34 +111,22 @@
         },
         "indices": [
           {
-            "name": "index_order_table_userId",
+            "name": "index_order_table_userName",
             "unique": false,
             "columnNames": [
-              "userId"
+              "userName"
             ],
             "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_order_table_userId` ON `${TABLE_NAME}` (`userId`)"
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_order_table_userName` ON `${TABLE_NAME}` (`userName`)"
           }
         ],
-        "foreignKeys": [
-          {
-            "table": "user_table",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "userId"
-            ],
-            "referencedColumns": [
-              "id"
-            ]
-          }
-        ]
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3c6863851809d83fd60f544b46af7b95')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1a038fae1f70eb48212daad9c51c048c')"
     ]
   }
 }

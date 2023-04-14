@@ -15,6 +15,6 @@ public interface OrderDao {
     @Insert
     void insertOrder(Order order);
 
-    @Query("SELECT * FROM order_table WHERE userId = :userId")
-    List<Order> getOrdersByUserId(int userId);
+    @Query("SELECT * FROM order_table WHERE userName = :userName")
+    List<Order> getOrdersByUserName(String userName);
 }

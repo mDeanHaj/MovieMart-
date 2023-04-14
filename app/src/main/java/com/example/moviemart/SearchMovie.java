@@ -64,9 +64,9 @@ public class SearchMovie extends AppCompatActivity implements MovieAdapter.OnIte
                     @Override
                     public void run() {
                         User loggedInUser = LoggedInUser.getInstance().getUser();
-                        int loggedInUserId = loggedInUser.getId();
+                        String loggedInUserName = loggedInUser.getUserId();
                         Order order = new Order();
-                        order.setUserId(loggedInUserId);
+                        order.setUserName(loggedInUserName);
                         order.setMovieTitle(selectedMovie.getTitle());
                         movieDatabase.orderDao().insertOrder(order);
                         runOnUiThread(new Runnable() {

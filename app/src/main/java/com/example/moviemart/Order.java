@@ -7,21 +7,14 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "order_table",
-        foreignKeys = {
-                @ForeignKey(entity = User.class,
-                        parentColumns = "id",
-                        childColumns = "userId",
-                        onDelete = ForeignKey.CASCADE)
-        },
-        indices = {@Index("userId")}
-)
+        indices = {@Index("userName")})
 public class Order {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo(name = "userId")
-    private int userId;
+    @ColumnInfo(name = "userName")
+    private String userName;
 
     @ColumnInfo(name = "movieTitle")
     private String movieTitle;
@@ -45,12 +38,12 @@ public class Order {
         this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
 }
