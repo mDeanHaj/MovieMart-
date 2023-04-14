@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class Dashboard extends AppCompatActivity {
 
     TextView mName;
-    Button mLogoutButton, mAdminButton, mSearchMovieButton, mOrderHistoryButton;
+    Button mLogoutButton, mAdminButton, mSearchMovieButton, mOrderHistoryButton, mCancelOrderButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,7 @@ public class Dashboard extends AppCompatActivity {
         mLogoutButton = findViewById(R.id.logoutButton);
         mSearchMovieButton = findViewById(R.id.searchMovieButton);
         mOrderHistoryButton = findViewById(R.id.orderHistoryButton);
+        mCancelOrderButton = findViewById(R.id.cancelOrderButton);
         mAdminButton = findViewById(R.id.adminButton);
         String user = getIntent().getStringExtra("name");
         mName.setText(user);
@@ -45,6 +46,13 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Dashboard.this, OrderHistory.class));
+            }
+        });
+
+        mCancelOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this, CancelOrder.class));
             }
         });
 
