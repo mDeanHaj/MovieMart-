@@ -36,7 +36,6 @@ public class OrderHistory extends AppCompatActivity {
 
         movieDatabase = MovieDatabase.getInstance(this);
 
-        // Retrieve the list of orders from the order_table
         new Thread(() -> {
             orders = movieDatabase.orderDao().getOrdersByUserName(LoggedInUser.getInstance().getUser().getUserId());
             runOnUiThread(() -> {

@@ -25,21 +25,32 @@ public abstract class MovieDatabase extends RoomDatabase {
                             MovieDatabase.class, "movie_database")
                     .fallbackToDestructiveMigration()
                     .build();
+            instance.prepopulateDatabase(context);
         }
         return instance;
     }
 
-    private static void insertPredefinedUsers(Context context) {
-        User user1 = new User();
-        user1.setUserId("testuser1");
-        user1.setPassword("testuser1");
+    private void prepopulateDatabase(Context context) {
+        UserDao userDao = userDao();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String adminUsername = "admin2";
+                String testUserUsername = "testuser1";
 
-        User adminUser = new User();
-        adminUser.setUserId("admin2");
-        adminUser.setPassword("admin2");
-
-        UserDao userDao = getInstance(context).userDao();
-        userDao.registerUser(user1);
-        userDao.registerUser(adminUser);
+                if (userDao.login(adminUsername, adminUsername) == null) {
+                    User admin = new User();
+                    admin.setUserId(adminUsername);
+                    admin.setPassword(adminUsername);
+                    userDao.registerUser(admin);
+                }
+                if (userDao.login(testUserUsername, testUserUsername) == null) {
+                    User testUser = new User();
+                    testUser.setUserId(testUserUsername);
+                    testUser.setPassword(testUserUsername);
+                    userDao.registerUser(testUser);
+                }
+            }
+        }).start();
     }
 }
