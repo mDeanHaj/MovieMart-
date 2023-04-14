@@ -12,4 +12,5 @@
     <string name="not_yet_registered">Not yet registered?</string>
     <string name="welcome_please_login">Welcome! Please Login</string>
     <string name="if_nothing_appears_please_refresh_page">If nothing appears, please refresh page.</string>
+    <string name="order_a_movie">Order a Movie!</string>
 </resources>
