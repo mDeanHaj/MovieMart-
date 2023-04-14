@@ -58,7 +58,7 @@ public class Dashboard extends AppCompatActivity {
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences preferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+                SharedPreferences preferences = getSharedPreferences("MovieMart", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.clear();
                 editor.apply();
