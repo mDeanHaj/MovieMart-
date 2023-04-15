@@ -1,6 +1,7 @@
 package com.example.moviemart.db;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -14,6 +15,9 @@ public interface OrderDao {
 
     @Insert
     void insertOrder(Order order);
+
+    @Delete
+    void deleteOrder(Order order);
 
     @Query("SELECT * FROM order_table WHERE userName = :userName")
     List<Order> getOrdersByUserName(String userName);
