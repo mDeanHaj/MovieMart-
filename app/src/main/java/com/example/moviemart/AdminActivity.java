@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class AdminActivity extends AppCompatActivity {
 
-    Button mReturnButton, mExistMovie;
+    Button mReturnButton, mExistMovie, mViewUsers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,10 @@ public class AdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin);
 
         mReturnButton = findViewById(R.id.returnButton);
-        mExistMovie = findViewById(R.id. existMovie);
+//        mAddMovie = findViewById(R.id.addMovie);
+        mExistMovie = findViewById(R.id.existMovie);
+//        mRemoveMovie = findViewById(R.id.removeMovie);
+        mViewUsers = findViewById(R.id.viewUsersButton);
 
         mReturnButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,10 +29,21 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
+        // Add a Movie Button
+
         mExistMovie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AdminActivity.this, ExistingMovie.class));
+            }
+        });
+
+        // Remove a Movie Button
+
+        mViewUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminActivity.this, AdminUsers.class));
             }
         });
     }

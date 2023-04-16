@@ -12,6 +12,9 @@
         android:theme="@style/Theme.MovieMart"
         tools:targetApi="31">
         <activity
+            android:name=".AdminUsers"
+            android:exported="false" />
+        <activity
             android:name=".ExistingMovie"
             android:exported="false" />
         <activity
