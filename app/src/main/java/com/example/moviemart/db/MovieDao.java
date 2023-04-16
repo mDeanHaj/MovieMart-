@@ -14,7 +14,7 @@ public interface MovieDao {
     @Insert
     void insert(Movie movie);
 
-    @Query("SELECT * FROM movie_table")
+    @Query("SELECT * FROM movie_table ORDER BY title COLLATE NOCASE ASC")
     List<Movie> getAllMovies();
 
     @Query("SELECT COUNT(*) FROM movie_table WHERE title = :title AND year = :year AND genre = :genre")
@@ -23,4 +23,3 @@ public interface MovieDao {
     @Query("SELECT * FROM movie_table WHERE id = :id")
     Movie getMovieById(int id);
 }
-
