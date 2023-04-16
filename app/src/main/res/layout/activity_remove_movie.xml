@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AdminUsers">
+    tools:context=".RemoveMovie">
 
     <TextView
         android:id="@+id/textMess"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="10dp"
-        android:text="View all Users"
+        android:text="Remove a Movie from the Database"
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="16sp" />
@@ -21,11 +21,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:layout_height="0dp"
         android:layout_marginTop="5dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"/>
 
     <Button
         android:id="@+id/returnButton"
@@ -38,5 +38,6 @@
         android:layout_marginTop="10dp"
         android:text="Return"
         android:onClick="onReturnButtonClick" />
+
 
 </LinearLayout>

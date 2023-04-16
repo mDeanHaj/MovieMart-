@@ -78,7 +78,7 @@
         android:text="View Existing Movie" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/removeMovie"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="#84c247"

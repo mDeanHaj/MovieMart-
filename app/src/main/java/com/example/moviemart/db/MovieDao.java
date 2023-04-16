@@ -14,6 +14,9 @@ public interface MovieDao {
     @Insert
     void insert(Movie movie);
 
+    @Query("DELETE FROM movie_table WHERE id = :id")
+    void deleteMovieById(int id);
+
     @Query("SELECT * FROM movie_table ORDER BY title COLLATE NOCASE ASC")
     List<Movie> getAllMovies();
 
