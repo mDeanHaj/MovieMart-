@@ -26,6 +26,7 @@ public class MovieDatabaseInitializer {
         insertIfNotExists(dao, new Movie("Pulp Fiction", 1994, "Crime, Drama", 154));
         insertIfNotExists(dao, new Movie("Fight Club", 1999, "Drama", 139));
         insertIfNotExists(dao, new Movie("Harry Potter and the Sorcerer's Stone", 2001, "Fantasy, Adventure", 152));
+        insertIfNotExists(dao, new Movie("Avatar: The Way of Water", 2022, "Sci-Fi, Action", 192));
     }
 
     private static void insertIfNotExists(MovieDao dao, Movie movie) {
