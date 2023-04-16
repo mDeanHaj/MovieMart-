@@ -9,7 +9,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-import com.example.moviemart.Order;
 
 import com.example.moviemart.db.MovieDatabase;
 
@@ -35,7 +34,6 @@ public class SearchMovie extends AppCompatActivity implements MovieAdapter.OnIte
         recyclerView.setAdapter(adapter);
 
         movieDatabase = MovieDatabase.getInstance(this);
-        MovieDatabaseInitializer.populateAsync(movieDatabase);
 
         int loggedInUserId = LoggedInUser.getInstance().getUserIdFromPreferences(this);
         if (loggedInUserId != -1) {
