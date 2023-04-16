@@ -8,6 +8,8 @@ import androidx.room.Update;
 
 import com.example.moviemart.User;
 
+import java.util.List;
+
 @Dao
 public interface UserDao {
 
@@ -19,6 +21,9 @@ public interface UserDao {
 
     @Delete
     void deleteUser(User user);
+
+    @Query("SELECT * FROM user_table")
+    List<User> getAllUsers();
 
     @Query("SELECT * from user_table where userId=(:userId) and password=(:password)")
     User login(String userId, String password);
