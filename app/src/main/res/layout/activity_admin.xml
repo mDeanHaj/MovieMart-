@@ -68,7 +68,7 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/existMovie"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="#84c247"

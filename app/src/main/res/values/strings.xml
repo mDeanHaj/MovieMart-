@@ -18,4 +18,5 @@
     <string name="cancel_order">Cancel Order</string>
     <string name="logout">Logout?</string>
     <string name="welcome_back">Welcome Back:</string>
+    <string name="existing_movies_admin_view">Existing Movies - Admin View</string>
 </resources>
